@@ -1,6 +1,4 @@
 
-
-
 class Graph {
   constructor() {
     this.adjList = {};
@@ -21,19 +19,46 @@ class Graph {
   }
 
   buildGraph(edges) {
-    // Code goes here ...
+    edges.forEach(edgeArr => this.addEdges(edgeArr[0], edgeArr[1]));
+    return this.adjList;
   }
 
   breadthFirstTraversal(startingVertex) {
-    // Code goes here ...
+    let seenNodes = new Set();
+    let arr = [];
+    let queue = [startingVertex];
+
+    while (queue.length) {
+      let current = queue.shift();
+
+      if (!seenNodes.has(current)) {
+        arr.push(current);
+        seenNodes.add(current);
+        this.adjList[current].forEach(node => queue.push(node));
+      }
+    }
+    return arr;
   }
 
   depthFirstTraversalIterative(startingVertex) {
-    // Code goes here ...
+    let seenNodes = new Set();
+    let arr = [];
+    let stack = [startingVertex];
+
+    while (stack.length) {
+      let current = stack.pop();
+
+      if (!seenNodes.has(current)) {
+        arr.push(current);
+        seenNodes.add(current);
+        this.adjList[current].forEach(node => stack.push(node));
+      }
+    }
+    return arr;
   }
 
   depthFirstTraversalRecursive(startingVertex, visited = new Set(), vertices = []) {
-    // Code goes here ...
+
   }
 
 }
@@ -41,12 +66,3 @@ class Graph {
 module.exports = {
   Graph
 };
-
-
-
-
-
-
-
-
-
