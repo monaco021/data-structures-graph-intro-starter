@@ -193,7 +193,6 @@ describe('Graph Implementation', () => {
             graph.depthFirstTraversalRecursive('a');
             expect(graph.depthFirstTraversalRecursive).to.have.been.called.above(1);
         });
-
         it('should return an array of vertices visited in a dfs order', () => {
             expect(graph.depthFirstTraversalRecursive('a')).to.have.ordered.members(['a', 'b', 'c', 'f', 'g', 'd', 'e']);
         });
